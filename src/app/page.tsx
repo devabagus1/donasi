@@ -1,100 +1,136 @@
-import Image from "next/image";
+'use client';
+
+import Head from 'next/head';
+import Image from 'next/image';
+import CopyLinkButton from "@/components/CopyLinkButton";
 
 export default function Home() {
   return (
-    <div className="grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20 font-[family-name:var(--font-geist-sans)]">
-      <main className="flex flex-col gap-8 row-start-2 items-center sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={180}
-          height={38}
-          priority
-        />
-        <ol className="list-inside list-decimal text-sm text-center sm:text-left font-[family-name:var(--font-geist-mono)]">
-          <li className="mb-2">
-            Get started by editing{" "}
-            <code className="bg-black/[.05] dark:bg-white/[.06] px-1 py-0.5 rounded font-semibold">
-              src/app/page.tsx
-            </code>
-            .
-          </li>
-          <li>Save and see your changes instantly.</li>
-        </ol>
+     <div className="grid grid-rows-[auto_1fr_auto] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20 font-[family-name:var(--font-geist-sans)] bg-gray-50 text-gray-800">
+      <header className="text-center">
+        <h1 className="text-3xl font-bold text-blue-600">Website Donasi Online</h1>
+        <p className="mt-2 text-lg text-gray-600">Bersama kita bisa membuat perbedaan untuk mereka yang membutuhkan</p>
+      </header>
 
-        <div className="flex gap-4 items-center flex-col sm:flex-row">
+      <main className="flex flex-col gap-12 row-start-2 items-center sm:items-center">
+        {/* Hero Image */}
+        <Image
+          src="/me.png" 
+          alt="Picture of the author"
+          width={500}
+          height={500}
+        />
+
+        {/* Call to Action */}
+        <div className="text-center">
+          <h2 className="text-2xl font-bold text-gray-800">Mari Berkontribusi</h2>
+          <p className="text-gray-600 mt-2">Pilih program yang ingin Anda bantu dan jadilah bagian dari perubahan.</p>
           <a
-            className="rounded-full border border-solid border-transparent transition-colors flex items-center justify-center bg-foreground text-background gap-2 hover:bg-[#383838] dark:hover:bg-[#ccc] text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
+            href="/program"
+            className="mt-4 inline-block bg-green-600 text-white px-6 py-3 rounded-md hover:bg-green-700 transition"
           >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={20}
-              height={20}
-            />
-            Deploy now
-          </a>
-          <a
-            className="rounded-full border border-solid border-black/[.08] dark:border-white/[.145] transition-colors flex items-center justify-center hover:bg-[#f2f2f2] dark:hover:bg-[#1a1a1a] hover:border-transparent text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 sm:min-w-44"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Read our docs
+            Lihat Program Donasi
           </a>
         </div>
+
+        {/* Profil Organisasi */}
+        <section className="w-full bg-white rounded-lg shadow-lg p-6 sm:p-10">
+          <h3 className="text-xl font-bold text-gray-800 mb-4">Profil Kami</h3>
+          <div className="flex flex-col sm:flex-row gap-6 items-center">
+            <Image
+              src="/jdm.png" 
+              alt="Picture of the author"
+              width={400}
+              height={300}
+            />
+            <div className="text-gray-600">
+              <p>
+                Website Donasi Online adalah platform yang dirancang untuk memudahkan masyarakat dalam berbagi kepada
+                mereka yang membutuhkan. Kami bekerja sama dengan berbagai organisasi terpercaya untuk memastikan
+                donasi Anda tepat sasaran.
+              </p>
+              <p className="mt-4">
+                Visi kami adalah menciptakan dunia di mana setiap orang memiliki akses ke pendidikan, pangan, dan
+                kebutuhan dasar lainnya. Dengan donasi Anda, kita bisa mewujudkan visi ini bersama-sama.
+              </p>
+            </div>
+          </div>
+        </section>
+
+        {/* Featured Programs */}
+        <section className="w-full">
+          <h3 className="text-xl font-bold mb-4">Program Unggulan</h3>
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+            <div className="border rounded-lg shadow-md p-4 text-center">
+              <Image
+                src="/me.png" 
+                alt="Picture of the author"
+                width={500}
+                height={500}
+              />
+              <h4 className="mt-4 text-lg font-bold text-gray-800">Pendidikan Anak Yatim</h4>
+              <p className="text-gray-600 mt-2">Target: Rp 50.000.000</p>
+              <a
+                href="/donate"
+                className="mt-4 inline-block bg-blue-600 text-white px-4 py-2 rounded-md hover:bg-blue-700 transition">Donasi Sekarang</a>
+            </div>
+            <div className="border rounded-lg shadow-md p-4 text-center">
+              <Image
+                src="/me.png" 
+                alt="Picture of the author"
+                width={500}
+                height={500}
+              />
+              <h4 className="mt-4 text-lg font-bold text-gray-800">Bantuan Bencana Alam</h4>
+              <p className="text-gray-600 mt-2">Target: Rp 100.000.000</p>
+              <a
+                href="/donate"
+                className="mt-4 inline-block bg-blue-600 text-white px-4 py-2 rounded-md hover:bg-blue-700 transition"
+              >
+                Donasi Sekarang
+              </a>
+            </div>
+            <div className="border rounded-lg shadow-md p-4 text-center">
+              <Image
+                src="/me.png" 
+                alt="Picture of the author"
+                width={500}
+                height={500}
+              />
+              <h4 className="mt-4 text-lg font-bold text-gray-800">Program Pangan Sehat</h4>
+              <p className="text-gray-600 mt-2">Target: Rp 30.000.000</p>
+              <a
+                href="/donate"
+                className="mt-4 inline-block bg-blue-600 text-white px-4 py-2 rounded-md hover:bg-blue-700 transition"
+              >
+                Donasi Sekarang
+              </a>
+            </div>
+          </div>
+        </section>
       </main>
-      <footer className="row-start-3 flex gap-6 flex-wrap items-center justify-center">
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/file.svg"
-            alt="File icon"
-            width={16}
-            height={16}
-          />
-          Learn
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/window.svg"
-            alt="Window icon"
-            width={16}
-            height={16}
-          />
-          Examples
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/globe.svg"
-            alt="Globe icon"
-            width={16}
-            height={16}
-          />
-          Go to nextjs.org →
-        </a>
+
+      <footer className="row-start-3 text-center text-gray-600 text-sm">
+        <p>© 2024 Website Donasi Online. All Rights Reserved.</p>
+        <div className="flex justify-center gap-4 mt-4">
+          <a
+            href="https://facebook.com"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="hover:text-blue-600"
+          >
+            Facebook
+          </a>
+          <a
+            href="https://twitter.com"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="hover:text-blue-400"
+          >
+            Twitter
+          </a>
+          <CopyLinkButton />
+        </div>
       </footer>
     </div>
   );
